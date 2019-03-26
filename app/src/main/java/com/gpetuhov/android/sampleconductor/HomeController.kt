@@ -7,6 +7,9 @@ import android.widget.Button
 import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.RouterTransaction
 
+// Controllers are like Fragments.
+// When using Conductor library, we have to use Controllers instead of Fragments.
+
 class HomeController : Controller() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
@@ -18,5 +21,6 @@ class HomeController : Controller() {
         return view
     }
 
+    // This is how we navigate to second screen
     private fun navigate() = router.pushController(RouterTransaction.with(SecondController()))
 }

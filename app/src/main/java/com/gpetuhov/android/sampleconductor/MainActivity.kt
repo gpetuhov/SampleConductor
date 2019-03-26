@@ -7,6 +7,9 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.Conductor
 import kotlinx.android.synthetic.main.activity_main.*
 
+// This is the single activity app.
+// All screens (Controllers) are displayed inside the container in MainActivity.
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var router: Router
@@ -15,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Attach router to MainActivity and set home screen (HomeController)
         router = Conductor.attachRouter(this, controllerContainer, savedInstanceState)
         if (!router.hasRootController()) {
             router.setRoot(RouterTransaction.with(HomeController()))
@@ -22,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        // Redirect back button clicks to router
         if (!router.handleBack()) {
             super.onBackPressed()
         }
